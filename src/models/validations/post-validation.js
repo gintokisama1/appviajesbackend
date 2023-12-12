@@ -3,11 +3,11 @@ import { isValidObjectId } from "mongoose";
 import { applyValidations } from "../../middlewares/apply-validations.js";
 
 export const createPostValidations = [
-  body("title")
+  body("titulo")
     .notEmpty()
     .withMessage("El titulo no debe estar vacío.")
     .isString(),
-  body("content")
+  body("contenido")
     .notEmpty()
     .withMessage("El contenido no debe estar vacío.")
     .isString(),

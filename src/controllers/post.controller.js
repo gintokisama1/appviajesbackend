@@ -5,10 +5,10 @@ export const ctrlCreatePost = async (req, res) => {
   const userId = req.user._id;
 
   try {
-    const { title } = req.body;
+    const { titulo } = req.body;
 
     const post = new PostModel({
-      title,
+      titulo,
       author: userId,
     });
 
@@ -25,7 +25,7 @@ export const ctrlListPosts = async (req, res) => {
 
   try {
     const posts = await PostModel.find({ author: userId })
-      .populate("autor", ["username", "avatar"])
+      .populate("author", ["username", "avatar"])
       .populate("comentarios");
 
     return res.status(200).json(posts);
@@ -41,9 +41,9 @@ export const ctrlGetPost = async (req, res) => {
   try {
     const post = await PostModel.findOne({
       _id: postId,
-      autor: userId,
+      author: userId,
     })
-      .populate("autor", ["username", "avatar"])
+      .populate("author", ["username", "avatar"])
       .populate("comentarios");
 
     if (!post) {

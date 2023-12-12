@@ -26,7 +26,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 app.use("/api/auth", authRouter);
-app.use("/api/post", authHeader, validateToken, postRouter);
+app.use("/api/posts", authHeader, validateToken, postRouter);
 app.use("/api/comments", authHeader, validateToken, commentRouter);
 
 app.listen(config.port, async () => {

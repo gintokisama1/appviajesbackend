@@ -8,7 +8,6 @@ const PostSchema = new Schema(
     },
     contenido: {
       type: String,
-      required: true,
     },
     comentarios: [
       {
