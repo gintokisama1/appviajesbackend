@@ -9,17 +9,6 @@ const PostSchema = new Schema(
     contenido: {
       type: String,
     },
-    comentarios: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comentario",
-      },
-    ],
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "Usuario",
-      required: true,
-    },
   },
   {
     timestamps: true,

@@ -1,6 +1,6 @@
-import { UserModel } from '../models/User.js';
-import * as bcrypt from 'bcrypt';
-import { createJWT } from '../utils/jwt.js';
+import { UserModel } from "../models/User.js";
+import * as bcrypt from "bcrypt";
+import { createJWT } from "../utils/jwt.js";
 
 export const ctrlCreateUser = async (req, res) => {
   try {
@@ -17,10 +17,10 @@ export const ctrlLoginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await UserModel.findOne({ email });
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    if (!user) return res.status(404).json({ error: "User not found" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
+    if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
     const token = await createJWT({ userId: user._id });
 
