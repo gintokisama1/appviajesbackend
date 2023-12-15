@@ -23,4 +23,4 @@ const ComentarioSchema = new Schema(
   }
 );
 
-export const CommentModel = model("Comentario", ComentarioSchema);
+export const CommentModel = model("comentarios", ComentarioSchema);

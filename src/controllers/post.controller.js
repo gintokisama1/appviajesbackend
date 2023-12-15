@@ -24,9 +24,11 @@ export const ctrlListPosts = async (req, res) => {
   const userId = req.user._id;
 
   try {
-    const posts = await PostModel.find({ author: userId })
-      .populate("author", ["username", "avatar"])
-      .populate("comentarios");
+    const posts = await PostModel.find({ author: userId }).populate("author", [
+      "username",
+      "avatar",
+    ]);
+    //.populate("comentarios");
 
     return res.status(200).json(posts);
   } catch (error) {
@@ -42,9 +44,8 @@ export const ctrlGetPost = async (req, res) => {
     const post = await PostModel.findOne({
       _id: postId,
       author: userId,
-    })
-      .populate("author", ["username", "avatar"])
-      .populate("comentarios");
+    }).populate("author", ["username", "avatar"]);
+    //.populate("comentarios");
 
     if (!post) {
       return res.status(404).json({ error: "Post not found" });

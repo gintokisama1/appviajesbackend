@@ -9,6 +9,11 @@ const PostSchema = new Schema(
     contenido: {
       type: String,
     },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   {
     timestamps: true,
